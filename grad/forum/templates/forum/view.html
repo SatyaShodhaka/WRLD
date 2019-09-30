@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>
+        Sanguine
+    </title>
+{% endblock %}
+
+{% block body %}
+    <img src="{{ Post.image.url }}" alt ="" width = "500px"/>
+    <div class = "container">
+        <h1>{{ Post.title }}</h1>
+        <br><h2>{{ Post.category }}</h2><br>
+        <h2>{{ Post.description }}</h2><br>
+        <h2>{{ Post.date }}</h2><br>
+    </div>
+    <div class="container">
+        <p>{{ Post.description }}</p>
+    </div>

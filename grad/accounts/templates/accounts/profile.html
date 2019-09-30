@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Profile</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <p>
+        <h1>Profile</h1>
+        Username: {{ user }}<br><br>
+        First Name: {{ user.first_name }}<br><br>
+        Last Name: {{ user.last_name }}<br><br>
+        <p>Email: {{ user.userprofile.email }}</p><br><br>
+        <p>Description: {{ user.userprofile.description }}</p>
+        <p>website: {{ user.userprofile.website }}<br></p>
+        <img src="{{ user.userprofile.image.url }}" alt ="" width = "500px"/>
+        ..{{ user.userprofile.image.url }}
+    </p> 
+</div>
+{% endblock %}
