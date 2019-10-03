@@ -9,14 +9,12 @@ class UserProfile(models.Model):
     city = models.CharField(max_length=50,default='')
     website = models.URLField(default='')
     image = models.ImageField(upload_to='accounts/',default='accounts/user.png',blank = True)
-
-    def __str__(request):
-        return user.username
+    def __str__(self):
+        return self.user.username
         
 #creating the userprofile for the superusers
 def create_profile(sender, **kwargs):
     if kwargs['created']:
-        user_profile = UserProfile.objects.create(user=kwargs['instance'])
-        
+        user_profile = UserProfile.objects.get_or_create( user=kwargs['instance'])
 
-post_save.connect(create_profile,sender=User)
+post_save.connect( create_profile ,sender=User)

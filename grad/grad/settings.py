@@ -15,6 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TEMPLATE_DIR_ACCOUNTS=os.path.join(BASE_DIR,'accounts/templates')
+TEMPLATE_DIR_FORUM=os.path.join(BASE_DIR,'forum/templates')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -56,7 +57,7 @@ ROOT_URLCONF = 'grad.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR_ACCOUNTS,],
+        'DIRS': [TEMPLATE_DIR_ACCOUNTS,TEMPLATE_DIR_FORUM,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

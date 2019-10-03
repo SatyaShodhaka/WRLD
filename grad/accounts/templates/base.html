@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <head>
+    {% load static %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    {% block head %}
+        <link rel="stylesheet" type="text/css" href="{% static 'accounts/base.css' %}">
+        {% block head %}
     <title>
         Base
     </title>

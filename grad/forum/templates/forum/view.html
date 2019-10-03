@@ -8,11 +8,13 @@
 
 {% block body %}
     {% for post in posts %}
-    <img src="{{ post.image.url|default_if_none:'#' }}" alt ="" width = "500px"/>
+    <img src="{{ post.image.url|default_if_none:'#' }}" alt ="" width = "300px"/>
     <div class = "container">
+        <h1>{{ post.user }}</h1>
         <h1>{{ post.title }}</h1>
         <br><h2>{{ post.category }}</h2><br>
-        <h2>{{ Post.date }}</h2><br>
+        <h2>{{ post.date }}</h2><br>
+        <h2>{{ post.article }}
     </div>
     <div class="container">
         <p>{{ post.description }}</p>
