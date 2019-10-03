@@ -6,10 +6,12 @@
 
 {% block body %}
 <div class="container">
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Signup</button>
+        {{ form_user.as_p }}
+        <img src = "{{ user.userprofile.image.url }}"/>
+        <button type="submit">Change</button>
     </form>
 </div>
 {% endblock %}

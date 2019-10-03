@@ -7,13 +7,15 @@
 {% endblock %}
 
 {% block body %}
-    <img src="{{ Post.image.url }}" alt ="" width = "500px"/>
+    {% for post in posts %}
+    <img src="{{ post.image.url|default_if_none:'#' }}" alt ="" width = "500px"/>
     <div class = "container">
-        <h1>{{ Post.title }}</h1>
-        <br><h2>{{ Post.category }}</h2><br>
-        <h2>{{ Post.description }}</h2><br>
+        <h1>{{ post.title }}</h1>
+        <br><h2>{{ post.category }}</h2><br>
         <h2>{{ Post.date }}</h2><br>
     </div>
     <div class="container">
-        <p>{{ Post.description }}</p>
+        <p>{{ post.description }}</p>
     </div>
+    {% endfor %}
+{% endblock %}

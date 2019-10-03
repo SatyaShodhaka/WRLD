@@ -24,9 +24,26 @@
                       <a class="navbar-brand" href="#">Social Network</a>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
-                      <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/account/register/">Register</a></li>
-                      </ul>
+                        {% if user.is_authenticated %}
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a href="/account/profile">Profile</a></li>
+                            <li><a href="/account/profile/edit">Profile Edit</a></li>
+                            <li><a href="/account/change-password">Password Change</a></li>
+                            <li><a href="/forum/create-post">Contribute</a></li>
+                            <li><a href="/forum/">Forum</a></li>
+                          </ul>
+                          <ul class="nav navbar-nav navbar-right">
+                              <li><a href="/account/logout">Logout</a></li>
+                            </ul>
+                        {% else %}
+                        <ul class="nav navbar-nav navbar-right">
+                          <li><a href="/account/register/">Register</a></li>
+                        </ul>
+                          <ul class="nav navbar-nav navbar-right">
+                            <li><a href="/account/">Login</a></li>
+                            <li><a href="/forum/">Forum</a></li>
+                          </ul>
+                        {% endif %}
                     </div><!--/.nav-collapse -->
                   </div><!--/.container-fluid -->
                 </nav>

@@ -8,11 +8,10 @@ class UserProfile(models.Model):
     description = models.CharField(max_length=100, default='')
     city = models.CharField(max_length=50,default='')
     website = models.URLField(default='')
-    phone = models.IntegerField(default=0)
-    image = models.ImageField(upload_to='accounts',blank=True)
+    image = models.ImageField(upload_to='accounts/',default='accounts/user.png',blank = True)
 
-    def __str__(self):
-        return self.user.username
+    def __str__(request):
+        return user.username
         
 #creating the userprofile for the superusers
 def create_profile(sender, **kwargs):

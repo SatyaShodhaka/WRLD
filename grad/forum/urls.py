@@ -3,6 +3,6 @@ from . import views
 from django.contrib.auth.views import LoginView, LogoutView
  
 urlpatterns = [
-    path('/',views.view_forum, name='view_form'),
-    path('/create-post/',views.create_forum, name='create_forum'),
+    path('',views.view_post, name='view_post'),
+    path('create-post/',views.create_post, name='create_post'),
 ]

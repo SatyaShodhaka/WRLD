@@ -1,6 +1,6 @@
 from django.shortcuts import render,HttpResponse,redirect
-from django.contrib.auth.forms import UserCreationForm,UserChangeForm,PasswordChangeForm
-from accounts.forms import RegistrationForm
+from django.contrib.auth.forms import UserCreationForm,PasswordChangeForm
+from accounts.forms import RegistrationForm,UserUpdateForm,ProfileUpdateForm
 from django.contrib.auth.models import User
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth import authenticate, login
@@ -16,8 +16,7 @@ def register(request):
             return redirect('/account/')
     else:
         form = RegistrationForm()
-        args = {'form': form}
-        return render(request,'accounts/reg_form.html',args)
+    return render(request,'accounts/reg_form.html',{'form': form})
 
 @login_required
 def profile(request):
@@ -27,14 +26,19 @@ def profile(request):
 @login_required
 def edit_profile(request):
     if request.method == "POST":
-        form = UserChangeForm(request.POST,instance=request.user)
-        if form.is_valid():
+        form = UserUpdateForm(request.POST,instance=request.user)
+        form_user = ProfileUpdateForm(request.POST,\
+                                    request.FILES,\
+                                    instance = request.user.userprofile)
+        if form.is_valid() and form_user.is_valid:
             form.save()
+            form_user.save()
             return redirect('/account/')
     else:
-        form = UserChangeForm(instance=request.user)
-        args = {'form': form}
-        return render(request,'accounts/edit_profile.html',args)
+        form = UserUpdateForm(instance=request.user)
+        form_user = ProfileUpdateForm(instance = request.user.userprofile)
+    args = {'form': form,'form_user': form_user}
+    return render(request,'accounts/edit_profile.html',args)
 
 @login_required   
 def change_password(request):
@@ -43,7 +47,7 @@ def change_password(request):
         if form.is_valid():
             form.save()
             update_session_auth_hash(request, form.user)
-            return redirect('/account/profile')
+            return redirect('/account/profile/')
         else:
             return redirect('/account/change-password/')
     else:

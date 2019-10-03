@@ -1,11 +1,11 @@
 from django import forms
 from django.db import models
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm,UserChangeForm
+from .models import *
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
-    img = forms.ImageField(required=False)
     class Meta:
         model = User
         fields = (
@@ -15,7 +15,6 @@ class RegistrationForm(UserCreationForm):
             'email',
             'password1',
             'password2',
-            'img'
         )
     def save(self, commit=True):
     #commit save the data into database if its true
@@ -23,6 +22,24 @@ class RegistrationForm(UserCreationForm):
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
         user.email = self.cleaned_data['email']
-        user.img = self.cleaned_data['img']
         if commit:
             user.save()
+
+class UserUpdateForm(UserChangeForm):
+    class Meta:
+        model = User
+        fields = (
+            'email',
+            'first_name',
+            'last_name',
+        )
+
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = (
+            'description',
+            'website',
+            'city',
+            'image',
+        )
