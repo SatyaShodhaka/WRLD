@@ -1,11 +1,47 @@
 {% extends 'base.html' %}
+{% block head %}
+    <style>
+    .form-control {
+       font-size:1.2em;
+       }
+    label {
+        color: black;
+    }
+    button {
+        text-align: center;
+        width: 20%;
+        height: 200%;
+        margin-left: 43px;
+        font-size: 1.5em;
+    }
+    </style>
+{% endblock %}
 {% block body %}
-<div class="container">
-    <h1> Register </h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-    <button type="submit">Signup</button>
-    </form>
-</div>
+<div class="container text-center">
+    <form class="form-control" method="POST" style="background-color:transparent;border-color:transparent">
+      {% csrf_token %}
+      <ul style="list-style:none">
+        <br>
+        <li><label>Username <br>
+          {{form.username}}
+        </label></li>
+        <li><label>First Name <br>
+          {{form.first_name}}
+        </label></li>
+        <li><label>Last Name <br>
+          {{form.last_name}}
+        </label></li>
+        <li>  <label>E-mail <br>
+            {{form.email}}
+          </label></li>
+        <li><label>Password <br>
+          {{form.password1}}
+        </label></li>
+        <li>  <label>Confirm Password <br>
+            {{form.password2}}
+          </label></li>
+      </ul>
+      <br>
+    <button type="submit" class="btn btn-secondary btn-danger" name="button" value="submit"><span class="glyphicon glyphicon-flash"></span> LETS GO!</button>
+</form>
 {% endblock %}

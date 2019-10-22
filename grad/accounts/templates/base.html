@@ -3,58 +3,56 @@
     {% load static %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="{% static 'accounts/base.css' %}">
+        <link rel="shortcut icon" href="#" type="image/x-icon">
         {% block head %}
     <title>
-        Base
+        WRLD
     </title>
     {% endblock %}
 </head>
 <body>
-    <br>
-        <div class="container">
-
-                <!-- Static navbar -->
-                <nav class="navbar navbar-default">
-                  <div class="container-fluid">
-                    <div class="navbar-header">
-                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                      </button>
-                      <a class="navbar-brand" href="#">Social Network</a>
-                    </div>
-                    <div id="navbar" class="navbar-collapse collapse">
-                        {% if user.is_authenticated %}
-                        <ul class="nav navbar-nav navbar-left">
-                            <li><a href="/account/profile">Profile</a></li>
-                            <li><a href="/account/profile/edit">Profile Edit</a></li>
-                            <li><a href="/account/change-password">Password Change</a></li>
-                            <li><a href="/forum/create-post">Contribute</a></li>
-                            <li><a href="/forum/">Forum</a></li>
-                          </ul>
-                          <ul class="nav navbar-nav navbar-right">
-                              <li><a href="/account/logout">Logout</a></li>
-                            </ul>
-                        {% else %}
-                        <ul class="nav navbar-nav navbar-right">
-                          <li><a href="/account/register/">Register</a></li>
-                        </ul>
-                          <ul class="nav navbar-nav navbar-right">
-                            <li><a href="/account/">Login</a></li>
-                            <li><a href="/forum/">Forum</a></li>
-                          </ul>
-                        {% endif %}
-                    </div><!--/.nav-collapse -->
-                  </div><!--/.container-fluid -->
-                </nav>
-              </div> <!-- /container -->
-        <div class="container">
-        {% block body%}
-        <h1> Welcome</h1>
-        <h1>Base</h1>
-        {% endblock %}
-        </div>
+  <div class="container main">
+      <header>
+      <!-- Static navbar -->
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/forum/">WRLD</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+              {% if user.is_authenticated %}
+              <ul class="nav navbar-nav navbar-left">
+                  <li><a href="/account/profile">Profile</a></li>
+                  <li><a href="/account/profile/edit">Profile Edit</a></li>
+                  <li><a href="/account/change-password">Password Change</a></li>
+                  <li><a href="/forum/create-post">Contribute</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/account/logout">Logout</a></li>
+                  </ul>
+              {% else %}
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/account/register/">Register</a></li>
+              </ul>
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="/account/">Login</a></li>
+                </ul>
+              {% endif %}
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+    </header>
+  </div> <!-- /container -->
+  <section>
+    {% block body%}
+      <h1>Forum Failed to load</h1>
+    {% endblock %}
+  </section>
 </body>
-</head>
+</html>

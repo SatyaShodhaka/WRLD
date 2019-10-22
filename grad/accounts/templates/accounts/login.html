@@ -1,7 +1,15 @@
 {% extends 'base.html' %}
-<!DOCTYPE html>
+{% block head %}
+<style>
+.card {
+    position: absolute;
+    right: 300px;
+    width: 500px;     
+}
+</style>
+{% endblock %}
 {% block body%}
-<div class="container">
+<!-- <div class="container">
     <p>
         You can login here!
     </p>
@@ -10,5 +18,34 @@
     {{ form.as_p }}
         <button type="submit">Login</button>
     </form>
-</div>    
+</div>     -->
+<br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <div class="con" style="color:purple;position: absolute;padding: 20px;" >
+	   <h1 style="font-size:9vw">Explor3 <br>the <span style="color:black">WRLD</span></h1>
+   </div>
+    <div class="card border-dark mb-3 w-100 p-3" id="Logg" style="position: absolute;right: 200px;width: 300px;">
+        <div class="card-header" style="background-color:black;color:white"><h1 style="text-align:center">Login</h1>
+        </div>
+        <br>
+        <br>
+        <form method="post" style="padding:20px;color: black;">
+            {% csrf_token %}
+            {{ form.as_p }}
+    <h6 style="font-size:7"><a href="/account/register" style="text-decoration: none;color: black;">Register Here!</a></h6>
+    <br>
+    <button class="btn" style="background-color:black;color:white" type="submit">Shoot!</button>
+    <br>
+    <br>
+
+
+
+        </form>
+
+
+    </div>
 {% endblock %}    

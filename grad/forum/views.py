@@ -43,4 +43,4 @@ def create_post(request):
         return render(request,'forum/create.html',args)
 
 def full_post(request):
-    return request
+    return render(request,'forum/post.html')

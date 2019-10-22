@@ -54,3 +54,6 @@ def change_password(request):
         form = PasswordChangeForm(user=request.user)
         args = {'form': form}
         return render(request,'accounts/change_password.html',args)  
+
+def test_view(request):
+    return render(request,'accounts/test.html')

@@ -1,18 +1,38 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Profile</title>
-
+<title>Edit Profile</title>
+<style>
+.card{ 
+    margin: 0 auto;
+}
+.edit_prof{
+    text-align: center;
+    display: inline;
+}
+i {
+    width: 20px;
+}
+</style>
 {% endblock %}
-
 {% block body %}
-<div class="container">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        {{ form_user.as_p }}
-        <img src = "{{ user.userprofile.image.url }}"/>
-        <button type="submit">Change</button>
-    </form>
+<div class="card border-dark mb3" style="width: 25em;">
+        <div class="card-header" style="background-color:black;color:white"><h1 style="text-align:center">Edit Profile</h1></div>
 </div>
+<br>
+<div class="edit_prof">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>First Name:{{ form.first_name }}</p>
+            <p></p>Last Name:{{ form.last_name }}</p>
+            <p></p>Email:{{ form.email }}</p>
+            <p>About:{{ form_user.description }}</p>
+            <p>Website:{{ form_user.website }}</p>
+            <p>City:{{ form_user.city }}</p>
+            <p>Image:{{ form_user.image }}</p>
+            <button type="submit" class="btn btn-secondary btn-danger btn-lg" name="button" value="submit"><span class="glyphicon glyphicon-flash"></span>Update</button>
+        </form>
+    </div>
+    <br>
+    <i class="fas fa-biohazard"></i>
 {% endblock %}

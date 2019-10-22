@@ -8,6 +8,22 @@ body{
     font-family: "Bebas Neue W01 Regular";
     background-color: rgb(155, 204, 21);
 }
-.navbar{
-    background-color:whitesmoke
+.navbar {
+    margin-top: 1%;
+    size: 5px;
+    background: black;
+}  
+.navbar-brand {
+    padding: 0 15px;
+    height: 80px;
+    line-height: 80px;
+    font-size: 2em;
+}
+.navbar-toggle {
+    /* (80px - button height 34px) / 2 = 23px */
+    margin-top: 23px;
+    padding: 9px 10px !important;
+}
+.navbar li {
+    font-size: 1.6em;
 }

@@ -2,21 +2,34 @@
 
 {% block head %}
 <title>Profile</title>
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'accounts/base.css' %}">
+<style>
+.card{ 
+    margin: 0 auto;
+}
+.prof{
+    text-align: center;
+    display: inline;
+}
+</style>
 {% endblock %}
 
 {% block body %}
-<div class="container">
-    <p>
-        <h1>Profile</h1>
-        Username: {{ user }}<br><br>
-        First Name: {{ user.first_name }}<br><br>
-        Last Name: {{ user.last_name }}<br><br>
-        <p>Email: {{ user.userprofile.email }}</p><br><br>
-        <p>Description: {{ user.userprofile.description }}</p>
-        <p>website: {{ user.userprofile.website }}<br></p>
-        <img src="{{ user.userprofile.image.url }}" alt ="" width = "500px"/>
-    </p> 
-</div>
+<div class="card border-dark mb3" style="width: 25em;">
+        <div class="card-header" style="background-color:black;color:white"><h1 style="text-align:center">Profile</h1></div>
+        <br>
+        <div class="prof" style="padding:20px">
+        {% if user.userprofile.image %}
+          <img src="{{ user.userprofile.image.url }}" width="280px">
+        {% endif %}
+        <br>
+        <br>
+        <p>Username:{{ user.username }}</p>
+        <p>First Name: {{ user.first_name }}</p>
+        <p>Last Name: {{ user.last_name }}</p>
+        <p>Email: {{ user.email }}</p>
+        <p>Desciption: {{ user.userprofile.description }}</p>
+        <p>Phone: {{ user.userprofile.phone }}</p>
+        <p>Website: {{ user.userprofile.website }}</p>
+        <p>City: {{ user.userprofile.city }}</p>
+        </div>
 {% endblock %}

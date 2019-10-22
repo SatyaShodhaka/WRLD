@@ -5,11 +5,14 @@
 {% endblock %}
 
 {% block body %}
+<div class="card border-dark mb3" style="width: 25em;margin: 0 auto;">
+        <div class="card-header" style="background-color:black;color:white"><h1 style="text-align:center">Create a post</h1></div>
+</div>
 <div class="container">
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Post</button>
+        <button type="submit" class="btn btn-secondary btn-danger btn-lg" name="button" value="submit"><span class="glyphicon glyphicon-flash"></span>Post</button>
     </form>
 </div>
 {% endblock %}
