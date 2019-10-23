@@ -12,22 +12,6 @@ def view_post(request):
     posts = Post.objects.all()
     args = {'form':form,'posts':posts}
     return render(request,'forum/view.html',args)
-
-"""
-def create_post(request):
-    if request.method == "POST":
-        form = PostForm(request.POST,\
-                request.FILES,\
-                instance=request.user)
-        if form.is_valid():
-            form.user = request.user
-            form.save()
-            return redirect('/forum/')
-    else:
-        form = PostForm(instance=request.user)
-    args = {'form': form}
-    return render(request,'forum/create.html',args)
-"""
 @login_required
 def create_post(request):
     if request.method == "POST":
@@ -42,5 +26,6 @@ def create_post(request):
         args = {'form':form}
         return render(request,'forum/create.html',args)
 
-def full_post(request):
-    return render(request,'forum/post.html')
+def full_post(request,id):
+	post= get_object_or_404(Post, id=id)
+	return render(request, 'forum/post.html', {'post':post})

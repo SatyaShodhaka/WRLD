@@ -1,9 +1,17 @@
 {% extends 'base.html'%}
 
 {% block head %}
-
+    <title>Post</title>
 {% endblock %}
 
 {% block body %}
-
+<a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url|default_if_none:'#' }}" alt ="" width = "300px"/></a>
+<div class = "container">
+    <h2>{{ post.user }}</h2>
+    <a href="{{ post.get_absolute_url }}"></a><h1>{{ post.title }}</h1></a>
+    <h2>{{ post.category }}</h2>
+    <h3>{{ post.date }}</h3><br>
+    <h3>{{ post.article }}</h3>
+    <p>{{ post.description }}</p>
+</div>
 {% endblock %}
