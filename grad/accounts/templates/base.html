@@ -1,58 +1,166 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
-    {% load static %}
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="{% static 'accounts/main.css' %}">
-        <link rel="shortcut icon" href="#" type="image/x-icon">
-        {% block head %}
-    <title>
-        WRLD
-    </title>
-    {% endblock %}
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>WRLD</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'accounts/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="{% static 'accounts/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'accounts/css/clean-blog.min.css' %}" rel="stylesheet">
+  
+  {% block head %}
+  {% endblock %}
+
 </head>
+
 <body>
-  <div class="container main">
-      <header>
-      <!-- Static navbar -->
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/forum/">WRLD</a>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" style="font-size: 1.3em;" href="/forum/">WRLD</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        {% if user.is_authenticated %}
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/forum/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/account/profile">Profile</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/account/profile/edit"> Edit Profile</a>
+            </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/forum/create-post">Contribute</a>
+          </li>
+          <li class="nav-item">
+            <li class="nav-item">
+                <a class="nav-link" href="/account/change-password"> Change Password </a>
+              </li>
+            <li class="nav-item">
+          <li class="nav-item">
+              <a class="nav-link" href="/account/logout">Logout</a>
+          </li>
+        </ul>
+        
+        {% else %}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item navbar-right">
+              <a class="nav-link" href="/forum/tech/">Tech</a>
+            </li>
+            <li class="nav-item navbar-right">
+                <a class="nav-link" href="/forum/news/">News</a>
+            </li>
+            <li class="nav-item navbar-right">
+                <a class="nav-link" href="/forum/music/">Music</a>
+            </li>
+            <li class="nav-item navbar-right">
+                <a class="nav-link" href="/forum/food/">Food</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/forum/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/account/">Login</a>
+              </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/account/register/">Register</a>
+            </li>
+          </ul>
+          {% endif %}
+      </div>
+    </div>
+  </nav>
+  <!-- Page Header -->
+  <header id="header" class="masthead" style="background-image: url(https://cdn.theatlantic.com/assets/media/img/mt/2019/08/Astronaut_Holding_DoubleTree_Cookie/lead_720_405.jpg?mod=1564771264)">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>EXPLOR3 THE WRLD</h1>
+            <span class="subheading">I have these Lucid Dreams</span>
           </div>
-          <div id="navbar" class="navbar-collapse collapse">
-              {% if user.is_authenticated %}
-              <ul class="nav navbar-nav navbar-left">
-                  <li><a href="/account/profile">Profile</a></li>
-                  <li><a href="/account/profile/edit">Profile Edit</a></li>
-                  <li><a href="/account/change-password">Password Change</a></li>
-                  <li><a href="/forum/create-post">Contribute</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/account/logout">Logout</a></li>
-                  </ul>
-              {% else %}
-              <ul class="nav navbar-nav navbar-right">
-                <li><a href="/account/register/">Register</a></li>
-              </ul>
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="/account/">Login</a></li>
-                </ul>
-              {% endif %}
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-    </header>
-  </div> <!-- /container -->
-  <section>
-    {% block body%}
-      <h1>Forum Failed to load</h1>
-    {% endblock %}
-  </section>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {% block body %}
+  
+  {% endblock %}
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/satya_shodhaka">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.facebook.com/shodhakasatya">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/SatyaShodhaka">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+                <a href="https://www.instagram.com/satya_shodhaka/?hl=en">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-instagram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          </ul>
+          <p class="copyright text-muted">Copyright &copy; <b>WRLD 2019</b> </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'accounts/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'accounts/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="{% static 'accounts/js/clean-blog.min.js' %}"></script>
 </body>
 </html>

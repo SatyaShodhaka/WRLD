@@ -56,4 +56,4 @@ def change_password(request):
         return render(request,'accounts/change_password.html',args)  
 
 def test_view(request):
-    return render(request,'accounts/test.html')
+    return render(request,'accounts/base.html')
